@@ -29,7 +29,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var recyclerClones: RecyclerView
     private lateinit var recyclerApps: RecyclerView
     private lateinit var progressBar: ProgressBar
-    private lateinit var emptyView: TextView
+    private lateinit var emptyView: View
     private lateinit var searchEdit: EditText
     private lateinit var fabAdd: FloatingActionButton
     private lateinit var cloneAdapter: ClonedAppAdapter
