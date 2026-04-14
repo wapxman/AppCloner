@@ -2,7 +2,6 @@
 <resources>
     <color name="background">#0F0F14</color>
     <color name="surface">#1A1A24</color>
-    <color name="surfaceLight">#252535</color>
     <color name="accent">#6C5CE7</color>
     <color name="accentLight">#A29BFE</color>
     <color name="accentDark">#5541D6</color>
@@ -11,7 +10,6 @@
     <color name="textHint">#555570</color>
     <color name="ripple">#206C5CE7</color>
     <color name="success">#00B894</color>
-    <color name="warning">#FDCB6E</color>
     <color name="error">#FF6B6B</color>
     <color name="statusBarColor">#0F0F14</color>
     <color name="navigationBarColor">#0F0F14</color>

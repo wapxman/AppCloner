@@ -1,31 +1,99 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
+
     <uses-permission android:name="android.permission.QUERY_ALL_PACKAGES" tools:ignore="QueryAllPackagesPermission" />
-    <uses-permission android:name="android.permission.INSTALL_SHORTCUT" />
-    <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
-    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
-    <application android:name=".AppClonerApp" android:allowBackup="true"
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <uses-permission android:name="android.permission.WRITE_CONTACTS" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+
+    <application
+        android:name=".App"
+        android:allowBackup="true"
         android:icon="@drawable/ic_launcher_foreground"
         android:roundIcon="@drawable/ic_launcher_foreground"
-        android:label="@string/app_name" android:supportsRtl="true"
-        android:theme="@style/Theme.AppCloner" android:usesCleartextTraffic="true" tools:targetApi="31">
-        <activity android:name=".ui.MainActivity" android:exported="true" android:theme="@style/Theme.AppCloner">
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.AppCloner"
+        android:largeHeap="true"
+        android:usesCleartextTraffic="true"
+        tools:targetApi="31">
+
+        <!-- Main Activity -->
+        <activity
+            android:name=".ui.MainActivity"
+            android:exported="true"
+            android:theme="@style/Theme.AppCloner">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.ClonedAppActivity" android:exported="true" android:theme="@style/Theme.AppCloner.Transparent"
-            android:taskAffinity="" android:launchMode="singleTask" android:documentLaunchMode="always" />
-        <activity android:name=".ui.AppDetailActivity" android:exported="false" android:theme="@style/Theme.AppCloner" />
-        <service android:name=".service.CloneService" android:exported="false" android:foregroundServiceType="dataSync" />
-        <provider android:name="androidx.core.content.FileProvider" android:authorities="${applicationId}.fileprovider"
-            android:exported="false" android:grantUriPermissions="true">
-            <meta-data android:name="android.support.FILE_PROVIDER_PATHS" android:resource="@xml/file_paths" />
+
+        <!--
+            ==========================================
+            VirtualApp Stub Components
+            These are placeholder components that
+            VirtualApp replaces at runtime with the
+            real activities/services of cloned apps.
+            ==========================================
+        -->
+
+        <!-- Stub Activities for cloned apps (VirtualApp needs these) -->
+        <activity android:name="com.lody.virtual.client.stub.StubActivity$C0" android:exported="false" android:taskAffinity="v.t.0" android:process=":p0" android:configChanges="mcc|mnc|locale|touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize|smallestScreenSize|fontScale" />
+        <activity android:name="com.lody.virtual.client.stub.StubActivity$C1" android:exported="false" android:taskAffinity="v.t.1" android:process=":p1" android:configChanges="mcc|mnc|locale|touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize|smallestScreenSize|fontScale" />
+        <activity android:name="com.lody.virtual.client.stub.StubActivity$C2" android:exported="false" android:taskAffinity="v.t.2" android:process=":p2" android:configChanges="mcc|mnc|locale|touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize|smallestScreenSize|fontScale" />
+        <activity android:name="com.lody.virtual.client.stub.StubActivity$C3" android:exported="false" android:taskAffinity="v.t.3" android:process=":p3" android:configChanges="mcc|mnc|locale|touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize|smallestScreenSize|fontScale" />
+        <activity android:name="com.lody.virtual.client.stub.StubActivity$C4" android:exported="false" android:taskAffinity="v.t.4" android:process=":p4" android:configChanges="mcc|mnc|locale|touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize|smallestScreenSize|fontScale" />
+
+        <!-- Dialog-themed stubs -->
+        <activity android:name="com.lody.virtual.client.stub.StubDialog$C0" android:exported="false" android:taskAffinity="v.t.0" android:process=":p0" android:theme="@android:style/Theme.Dialog" android:configChanges="mcc|mnc|locale|touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize|smallestScreenSize|fontScale" />
+        <activity android:name="com.lody.virtual.client.stub.StubDialog$C1" android:exported="false" android:taskAffinity="v.t.1" android:process=":p1" android:theme="@android:style/Theme.Dialog" android:configChanges="mcc|mnc|locale|touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize|smallestScreenSize|fontScale" />
+
+        <!-- Stub Services -->
+        <service android:name="com.lody.virtual.client.stub.StubService$C0" android:exported="false" android:process=":p0" />
+        <service android:name="com.lody.virtual.client.stub.StubService$C1" android:exported="false" android:process=":p1" />
+        <service android:name="com.lody.virtual.client.stub.StubService$C2" android:exported="false" android:process=":p2" />
+        <service android:name="com.lody.virtual.client.stub.StubService$C3" android:exported="false" android:process=":p3" />
+        <service android:name="com.lody.virtual.client.stub.StubService$C4" android:exported="false" android:process=":p4" />
+
+        <!-- Stub Content Providers -->
+        <provider android:name="com.lody.virtual.client.stub.StubContentProvider$C0" android:exported="false" android:process=":p0" android:authorities="${applicationId}.virtual.provider.p0" />
+        <provider android:name="com.lody.virtual.client.stub.StubContentProvider$C1" android:exported="false" android:process=":p1" android:authorities="${applicationId}.virtual.provider.p1" />
+
+        <!-- VirtualApp Server process -->
+        <service android:name="com.lody.virtual.server.BinderProvider" android:exported="false" android:process=":x" />
+        <provider android:name="com.lody.virtual.server.ServiceBinderProvider" android:exported="false" android:process=":x" android:authorities="${applicationId}.virtual.server.binderprovider" />
+
+        <!-- Job Scheduler -->
+        <service android:name="com.lody.virtual.client.stub.StubJob$C0" android:exported="false" android:process=":p0" android:permission="android.permission.BIND_JOB_SERVICE" />
+        <service android:name="com.lody.virtual.client.stub.StubJob$C1" android:exported="false" android:process=":p1" android:permission="android.permission.BIND_JOB_SERVICE" />
+
+        <!-- File Provider -->
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
         </provider>
+
     </application>
 </manifest>
