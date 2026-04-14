@@ -1,0 +1,6 @@
+-keep class com.bakht.appcloner.model.** { *; }
+-keepattributes Signature
+-keepattributes *Annotation*
+-dontwarn com.google.gson.**
+-keep class com.google.gson.** { *; }
+-dontwarn kotlinx.coroutines.**
