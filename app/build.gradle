@@ -2,30 +2,44 @@ plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
 }
+
 android {
     namespace 'com.bakht.appcloner'
     compileSdk 34
+
     defaultConfig {
         applicationId "com.bakht.appcloner"
         minSdk 24
         targetSdk 34
-        versionCode 1
-        versionName "1.0"
+        versionCode 2
+        versionName "2.0"
+        multiDexEnabled true
+        ndk { abiFilters 'armeabi-v7a', 'arm64-v8a', 'x86', 'x86_64' }
     }
+
     buildTypes {
         release {
-            minifyEnabled true
+            minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_17
         targetCompatibility JavaVersion.VERSION_17
     }
     kotlinOptions { jvmTarget = '17' }
     buildFeatures { viewBinding true }
+    packagingOptions {
+        pickFirst 'lib/armeabi-v7a/libva-native.so'
+        pickFirst 'lib/arm64-v8a/libva-native.so'
+        pickFirst 'lib/x86/libva-native.so'
+        pickFirst 'lib/x86_64/libva-native.so'
+    }
 }
+
 dependencies {
+    implementation project(':VirtualApp:lib')
     implementation 'androidx.core:core-ktx:1.12.0'
     implementation 'androidx.appcompat:appcompat:1.6.1'
     implementation 'com.google.android.material:material:1.11.0'
@@ -36,5 +50,5 @@ dependencies {
     implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.7.0'
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3'
     implementation 'com.google.code.gson:gson:2.10.1'
-    implementation 'androidx.palette:palette-ktx:1.0.0'
+    implementation 'androidx.multidex:multidex:2.0.1'
 }
