@@ -1,6 +1,5 @@
+-keep class com.lody.virtual.** { *; }
+-keep class mirror.** { *; }
 -keep class com.bakht.appcloner.model.** { *; }
--keepattributes Signature
--keepattributes *Annotation*
--dontwarn com.google.gson.**
--keep class com.google.gson.** { *; }
--dontwarn kotlinx.coroutines.**
+-dontwarn com.lody.virtual.**
+-dontwarn mirror.**

@@ -1,10 +1,10 @@
 *.iml
 .gradle
-/local.properties
 /.idea
 /build
 /app/build
 /captures
+local.properties
 .externalNativeBuild
 .cxx
-local.properties
+/VirtualApp
